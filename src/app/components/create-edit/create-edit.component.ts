@@ -18,7 +18,10 @@ export class CreateEditComponent implements OnInit {
 
   userForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    cnpj: new FormControl('', Validators.required),
+    /* cnpj: new FormControl('', Validators.required), */
+    tel: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    endereco: new FormControl('', Validators.required),
     status: new FormControl('Ativo', Validators.required),
   });
 
@@ -35,7 +38,10 @@ export class CreateEditComponent implements OnInit {
         if (data) {
           this.userForm = new FormGroup({
             name: new FormControl(data.name, Validators.required),
-            cnpj: new FormControl(data.cnpj, Validators.required),
+            //cnpj: new FormControl(data.cnpj, Validators.required),
+            tel: new FormControl(data.tel, Validators.required),
+            email: new FormControl(data.email, Validators.required),
+            endereco: new FormControl(data.endereco, Validators.required),
             status: new FormControl(data.status, Validators.required),
           });
         }
@@ -51,7 +57,10 @@ export class CreateEditComponent implements OnInit {
       this.invalidForm = false;
       const obj = {
         name: this.userForm.value.name,
-        cnpj: this.userForm.value.cnpj,
+        //cnpj: this.userForm.value.cnpj,
+        tel: this.userForm.value.tel,
+        email: this.userForm.value.email,
+        endereco: this.userForm.value.endereco,
         status: this.userForm.value.status,
       };
       if (this.pageTitle === 'Novo Cliente') {

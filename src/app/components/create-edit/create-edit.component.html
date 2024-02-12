@@ -28,7 +28,57 @@
             Digite um nome válido
           </div>
         </div>
-        <label>CNPJ</label>
+        <label>Telefone</label>
+        <input type="text" name="tel" formControlName="tel" maxlength="13" />
+        <div
+          *ngIf="
+            (userForm.controls['tel'].invalid &&
+              (userForm.controls['tel'].dirty ||
+                userForm.controls['tel'].touched)) ||
+            invalidForm
+          "
+        >
+          <div *ngIf="userForm.controls['tel'].errors" class="error-message">
+            Digite um telefone válido
+          </div>
+        </div>
+        <label>E-mail</label>
+        <input type="text" name="email" formControlName="email" maxlength="50"/>
+        <div
+          *ngIf="
+            (userForm.controls['email'].invalid &&
+              (userForm.controls['email'].dirty ||
+                userForm.controls['email'].touched)) ||
+            invalidForm
+          "
+        >
+          <div *ngIf="userForm.controls['email'].errors" class="error-message">
+            Digite um email válido
+          </div>
+        </div>
+        <label>Endereço</label>
+        <input
+          type="text"
+          name="endereco"
+          formControlName="endereco"
+          maxlength="50"
+        />
+        <div
+          *ngIf="
+            (userForm.controls['endereco'].invalid &&
+              (userForm.controls['endereco'].dirty ||
+                userForm.controls['endereco'].touched)) ||
+            invalidForm
+          "
+        >
+          <div
+            *ngIf="userForm.controls['endereco'].errors"
+            class="error-message"
+          >
+            Digite um endereço válido
+          </div>
+        </div>
+        <!-- <label>CNPJ</label>
         <input type="text" name="cnpj" formControlName="cnpj" maxlength="20" />
         <div
           *ngIf="
@@ -41,7 +91,7 @@
           <div *ngIf="userForm.controls['cnpj'].errors" class="error-message">
             Digite um CNPJ válido
           </div>
-        </div>
+        </div> -->
         <label>Status</label>
         <select name="status" formControlName="status">
           <option value="Ativo">Ativo</option>

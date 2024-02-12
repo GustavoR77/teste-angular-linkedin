@@ -33,4 +33,9 @@ describe('myService', () => {
     const service: UserService = TestBed.get(UserService);
     expect(service.putUsers).toBeTruthy();
   });
+
+  it('should have deleteData function', () => {
+    const service: UserService = TestBed.get(UserService);
+    expect(service.deleteUser).toBeTruthy();
+  });
 });

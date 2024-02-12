@@ -45,6 +45,13 @@
   margin-right: 0.5rem;
 }
 
+.delete-icon {
+  color: darkgrey;
+  font-size: 16px;
+  height: auto;
+  margin-right: -0.3rem;
+}
+
 .status-active {
   color: #2acc30;
   font-size: 14px;
@@ -64,9 +71,21 @@
   white-space: nowrap;
 }
 
-.cnpj-column {
-  font-size: 0.75rem;
-  width: 40%;
+.cnpj-column,
+.email-column,
+.endereco-column {
+  font-size: 0.8rem;
+  width: 25%;
+  text-align: start;
+}
+
+.email-column {
+  text-align: center;
+}
+
+.tel-column {
+  font-size: 0.8rem;
+  width: 5%;
   text-align: start;
 }
 
@@ -77,7 +96,7 @@
 
 .button-column {
   text-align: end;
-  width: 20%;
+  width: 10%;
 }
 
 .edit-icon {
@@ -107,6 +126,16 @@
     white-space: nowrap;
   }
 
+  .email-column {
+    width: 5%;
+    font-size: 0.6rem;
+  }
+
+  .tel-column,
+  .endereco-column {
+    display: none;
+  }
+
   .status-column {
     width: 5%;
   }
@@ -118,6 +147,8 @@
 
   .name-column,
   .cnpj-column,
+  .tel-column,
+  .email-column,
   .status-column,
   .button-column {
     padding-left: 0.4rem;

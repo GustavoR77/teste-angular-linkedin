@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 import { Users } from 'src/app/models/users';
 
@@ -11,10 +12,23 @@ import { Users } from 'src/app/models/users';
   styleUrls: ['./table-list.component.css'],
 })
 export class TableListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'cnpj', 'status', 'getdetails'];
+  displayedColumns: string[] = [
+    'name',
+    'tel',
+    'email',
+    'endereco',
+    'status',
+    'delete',
+    'getdetails',
+  ];
+  //displayedColumns: string[] = ['name', 'tel', 'email', 'endereco', 'getdetails'];
   users: Users[] = [];
 
-  constructor(private usersService: UserService, private router: Router) {}
+  constructor(
+    private usersService: UserService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   mobileCheck = navigator.userAgent;
   dataSource = new MatTableDataSource<Users>(this.users);
@@ -23,6 +37,10 @@ export class TableListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser() {
     this.dataSource.paginator = this.paginator;
     this.usersService.getUsers().subscribe((data) => {
       if (data) {
@@ -35,6 +53,13 @@ export class TableListComponent implements OnInit {
   editUser(id: any) {
     this.usersService.getUsersByID(id);
     this.router.navigate(['/create-edit', id]);
+  }
+
+  deleteUser(id: any) {
+    this.usersService.deleteUser(id).subscribe(() => {
+      this.getUser();
+    });
+    this.toastr.success('Usuário deletado com sucesso!');
   }
 
   mobileDevice() {
