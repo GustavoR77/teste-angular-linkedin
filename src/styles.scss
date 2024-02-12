@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*IMPORTING THE TOAST STYLESHEET */
+
+@import "../node_modules/ngx-toastr/toastr.css";
+
+/* HTML TAGS STYLES */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #e5e5e5;
+  font-family: Monda !important;
+}
+
+table,
+tbody,
+thead,
+tr,
+td,
+th {
+  margin: auto;
+  border-top: 6px solid #e5e5e5;
+  font-family: Monda !important;
+}
+
+button {
+  border-radius: 5px;
+  font-family: Monda !important;
+  color: #fff !important;
+  width: 100px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+hr {
+  border: 1px solid #dddddd;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+/* HEADER STYLES */
+
+.header-toolbar {
+  background: #616161;
+  padding: 12.5px 12.5px;
+  width: 100%;
+  top: 0;
+  z-index: 99;
+  position: -webkit-sticky;
+  position: sticky;
+  height: 100px;
+  transition: 0.3s;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-logo {
+  width: 71px;
+}
+
+.mat-toolbar-row {
+  justify-content: center;
+}

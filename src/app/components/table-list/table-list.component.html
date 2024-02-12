@@ -1,0 +1,87 @@
+<div class="table-list-container">
+  <div class="list-content">
+    <div class="table-title">
+      <div class="main-title">
+        <img class="perfil-img" src="../../../assets/img/user-img.png" />
+        <h2>Listagem de Clientes</h2>
+      </div>
+      <button mat-raised-button class="button-add" routerLink="/create-edit">
+        <mat-icon>add</mat-icon>
+        NOVO
+      </button>
+    </div>
+    <hr />
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="table-list-style"
+      cellspacing="0"
+      cellpadding="0"
+    >
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element" class="name-column">
+          {{ element.name }}
+        </td>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="cnpj">
+        <th mat-header-cell *matHeaderCellDef>CNPJ</th>
+        <td mat-cell *matCellDef="let element" class="cnpj-column">
+          {{ element.cnpj }}
+        </td>
+      </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element" class="status-column">
+          <mat-icon
+            matTooltip="Cliete Ativo"
+            [matTooltipDisabled]="!mobileDevice()"
+            #tooltip="matTooltip"
+            (click)="tooltip.toggle()"
+            class="status-active"
+            *ngIf="element.status === 'Ativo'"
+            >lens</mat-icon
+          ><mat-icon
+            matTooltip="Cliete Inativo"
+            [matTooltipDisabled]="!mobileDevice()"
+            #tooltip="matTooltip"
+            (click)="tooltip.toggle()"
+            class="status-inactive"
+            *ngIf="element.status === 'Inativo'"
+            >lens</mat-icon
+          >
+
+          <span *ngIf="!mobileDevice()">{{ element.status }}</span>
+        </td>
+      </ng-container>
+      <!-- Get Details -->
+      <ng-container matColumnDef="getdetails">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" class="button-column">
+          <button
+            mat-raised-button
+            class="button-edit"
+            (click)="editUser(element.id)"
+            *ngIf="!mobileDevice()"
+          >
+            EDITAR
+          </button>
+
+          <mat-icon
+            *ngIf="mobileDevice()"
+            class="edit-icon"
+            (click)="editUser(element.id)"
+            >edit</mat-icon
+          >
+        </td>
+      </ng-container>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <div class="quantity-items">
+      Exibindo {{ itemsQty }} de {{ itemsQty }} clientes
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="table-list-container">
+  <div class="list-content">
+    <div class="table-title">
+      <div class="main-title">
+        <img class="perfil-img" src="../../../assets/img/user-img.png" />
+        <h2>{{ pageTitle }}</h2>
+      </div>
+    </div>
+    <hr />
+    <div class="form-div">
+      <form
+        [formGroup]="userForm"
+        appearance="fill"
+        class="form-style"
+        (ngSubmit)="onSubmit()"
+      >
+        <label>Nome</label>
+        <input type="text" name="name" formControlName="name" maxlength="50" />
+        <div
+          *ngIf="
+            (userForm.controls['name'].invalid &&
+              (userForm.controls['name'].dirty ||
+                userForm.controls['name'].touched)) ||
+            invalidForm
+          "
+        >
+          <div *ngIf="userForm.controls['name'].errors" class="error-message">
+            Digite um nome válido
+          </div>
+        </div>
+        <label>CNPJ</label>
+        <input type="text" name="cnpj" formControlName="cnpj" maxlength="20" />
+        <div
+          *ngIf="
+            (userForm.controls['cnpj'].invalid &&
+              (userForm.controls['cnpj'].dirty ||
+                userForm.controls['cnpj'].touched)) ||
+            invalidForm
+          "
+        >
+          <div *ngIf="userForm.controls['cnpj'].errors" class="error-message">
+            Digite um CNPJ válido
+          </div>
+        </div>
+        <label>Status</label>
+        <select name="status" formControlName="status">
+          <option value="Ativo">Ativo</option>
+          <option value="Inativo">Inativo</option>
+        </select>
+        <div class="button-div">
+          <button type="submit" class="send-button">SALVAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
